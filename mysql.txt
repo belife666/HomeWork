@@ -1,0 +1,65 @@
+1.mysql> create table student(sid int primary key auto_increment,sname varchar(20),birthday date,sex char(1))auto_increment=1001;
+2.mysql> insert into student(sname,birthday,sex) values ('张三','1990-10-10','男');
+  mysql> insert into student(sname,birthday,sex) values ('李四','1981-10-10','男'),('王五','1981-11-10','女'),('赵六','1988-10-10','男'),('孙七','1989-01-10','女'),('周八','1990-10-10','男'),('张三','1990-06-10','女');
+3.mysql> create table teacher(tid int primary key auto_increment,tname varchar(20))auto_increment=1;
+4.mysql> insert into teacher (tname) values ('叶平'),('王老师'),('张老师'),('李老师'),('孙老师');
+5.mysql> create table  course(cid int primary key auto_increment,cname varchar(20),tid int)auto_increment=1;
+6.mysql> insert into course(cname,tid) values ('企业管理',1),('马克思',2),('UML',3),('数据库',4),('英语',5),('语文',1),('数学',2);
+7.mysql> create table  sc(sid int,cid int,score int);
+8.mysql> load data infile 'G:\\a.txt' into table sc;
+
+
+二
+1.mysql> select count(*) from teacher where tname like '李%';
+2.mysql> select count(*),count(*) from student where sex='男' group by  sex='女';
+3.mysql> select sname,count(sname) from student group by sname having count(sname)>1;
+4.mysql> select sname,birthday from student where year(birthday)='1981';
+5.mysql> select avg(score),sid from sc group by sid having avg(score) > 60;
+6.mysql> select count(distinct sid) from sc;
+7.mysql> select sid,count(1) from  sc group by sid having count(1)>1;
+8.mysql> select cid, max(score),min(score) from sc group by cid;
+9.mysql> select cid,count(1) from sc group by cid ace;
+
+三
+1.mysql> select * from emp where  now()-year(hiredate) > 38;
+2.mysql>select * from emp where  month(now())=month(hiredate);
+3.
+4.mysql> select * from emp where year(hiredate)=1980 and month(hiredate)>6;
+5.mysql> select empno,ename from emp where ename like '____';
+6.mysql> select job,min(sal) from emp group by job;
+7.
+8.mysql> select job,max(sal) from emp group by job;
+9.
+10.mysql> select sum(sal),avg(sal) from emp ;
+11.mysql> select deptno,avg(sal) from emp where deptno<=20 group by deptno;
+12.mysql> select deptno,avg(sal) from emp group by deptno having avg(sal)>2000;
+13.mysql> select job,count(*) from emp where job like 'MANA%' group by job;
+14.mysql> select * from emp order by sal desc limit 3;
+15.mysql> select * from emp order by sal desc limit 6,5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
